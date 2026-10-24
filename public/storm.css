@@ -1,0 +1,23 @@
+:root{--bg:#0b1d2e;--card:#12293f;--fg:#e8f1f8;--mut:#8fa8bd;--ok:#2e9e6b;--warn:#e8a220;--bad:#e5484d;color-scheme:dark}
+@media(prefers-color-scheme:light){:root{--bg:#f2f6fa;--card:#fff;--fg:#10222f;--mut:#5b7387;color-scheme:light}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.45 system-ui,sans-serif;padding-bottom:env(safe-area-inset-bottom)}
+header{display:flex;align-items:center;gap:10px;padding:12px 16px;padding-top:calc(12px + env(safe-area-inset-top))}
+header h1{font-size:18px;margin:0;flex:1}header h1 span{color:var(--mut);font-weight:400;font-size:14px}
+.back,#refresh{color:var(--fg);background:none;border:0;font-size:22px;text-decoration:none;cursor:pointer}
+.banner{margin:0 16px 12px;padding:12px 14px;border-radius:12px;font-weight:600}
+.calm{background:color-mix(in srgb,var(--ok) 22%,var(--card))}
+.watch{background:color-mix(in srgb,var(--warn) 30%,var(--card))}
+.alert{background:color-mix(in srgb,var(--bad) 35%,var(--card))}
+#map{height:55vh;min-height:320px;margin:0 16px;border-radius:14px;overflow:hidden}
+.legend{margin:8px 16px;color:var(--mut);font-size:12px;display:flex;flex-wrap:wrap;gap:6px 14px}
+h2{font-size:16px;margin:18px 16px 8px}
+#storms{margin:0 16px;display:grid;gap:10px}
+.card{background:var(--card);border-radius:14px;padding:14px}
+.card h3{margin:0 0 4px;font-size:17px}.card small,.mut{color:var(--mut)}
+.kv{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-top:10px}
+.kv b{display:block;font-size:16px}.kv span{font-size:12px;color:var(--mut)}
+.grid{margin:0 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.grid .card{padding:10px 12px}.grid .card b{font-size:15px}.pill{display:inline-block;padding:1px 8px;border-radius:99px;font-size:12px;color:#fff}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}td,th{text-align:left;padding:3px 6px 3px 0}th{color:var(--mut);font-weight:500}
+footer{margin:18px 16px 28px;color:var(--mut);font-size:12px}footer a{color:inherit}

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Taiwan Storm Tracker</title>
+  <meta name="theme-color" content="#0b1d2e">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icon.svg">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="/storm.css">
+</head>
+<body>
+  <header>
+    <a href="/" class="back" aria-label="Back to chat">←</a>
+    <h1>Taiwan Storm Tracker <span>颱風動態</span></h1>
+    <button id="refresh" aria-label="Refresh">⟳</button>
+  </header>
+  <section id="status" class="banner calm">Loading…</section>
+  <div id="map"></div>
+  <div class="legend">
+    <label><input type="checkbox" id="radar" checked> Rain radar</label>
+    <span>Solid = observed track · dashed = forecast · circle = ≥15 m/s wind radius</span>
+  </div>
+  <section id="storms"></section>
+  <h2>Conditions in Taiwan</h2>
+  <section id="cities" class="grid"></section>
+  <footer id="foot"></footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/storm.js"></script>
+</body>
+</html>

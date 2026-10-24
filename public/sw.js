@@ -1,5 +1,5 @@
-const CACHE = 'argos-v1';
-const SHELL = ['/', '/styles.css', '/app.js', '/icon.svg', '/manifest.webmanifest'];
+const CACHE = 'argos-v2';
+const SHELL = ['/', '/storm', '/storm.css', '/storm.js', '/styles.css', '/app.js', '/icon.svg', '/manifest.webmanifest'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)));

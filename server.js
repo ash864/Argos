@@ -2,6 +2,7 @@ import http from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { extname, join, normalize } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { stormReport } from './storm.js';
 
 const ROOT = join(fileURLToPath(new URL('.', import.meta.url)), 'public');
 const PORT = process.env.PORT || 3000;
@@ -88,7 +89,7 @@ async function chat(req, res) {
 
 async function serveStatic(req, res) {
   const path = new URL(req.url, 'http://x').pathname;
-  const rel = normalize(path === '/' ? '/index.html' : path);
+  const rel = normalize(path === '/' ? '/index.html' : path === '/storm' ? '/storm.html' : path);
   if (rel.includes('..')) { res.writeHead(403).end(); return; }
   try {
     const data = await readFile(join(ROOT, rel));
@@ -103,6 +104,11 @@ http.createServer((req, res) => {
   if (req.method === 'GET' && req.url === '/api/config') {
     return void res.writeHead(200, { 'Content-Type': 'application/json' })
       .end(JSON.stringify({ needsCode: Boolean(ACCESS_CODE), demo: !API_KEY }));
+  }
+  if (req.method === 'GET' && req.url === '/api/storm') {
+    return void stormReport()
+      .then((d) => res.writeHead(200, { 'Content-Type': 'application/json' }).end(JSON.stringify(d)))
+      .catch((e) => res.writeHead(502, { 'Content-Type': 'application/json' }).end(JSON.stringify({ error: e.message })));
   }
   if (req.method === 'GET') return serveStatic(req, res);
   res.writeHead(405).end();
