@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: argos-storm
+    runtime: node
+    plan: free
+    branch: ccr-1940f9f0-cawpad
+    buildCommand: echo ok
+    startCommand: npm start
+    envVars:
+      - key: CWA_API_KEY
+        sync: false   # you'll be asked for it in the Render dashboard; never commit it
